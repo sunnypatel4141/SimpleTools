@@ -16,6 +16,8 @@ use constant PORT => 3306;
 
 # Get the handle so we are allways ready to use
 my $dbh = get_handle();
+main();
+
 
 sub get_handle {
   my $self = shift;
@@ -74,6 +76,7 @@ sub main {
   my $self = shift;
   my $filename = shift;
 
+	croak "Must supply filename to import " unless $filename;
   # open with UTF-8 The reverant of our lives.
   open(my $fh, '<:encoding(UTF-8)', $filename) or croak "Cannot open file for reading " . $!;
 
